@@ -1,0 +1,423 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+body,
+input,
+textarea {
+  font-family: "Poppins", sans-serif;
+}
+
+/* --- Scoped Styles Start Here --- */
+
+.voco-contact-form-container {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  min-height: 70vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-4px) scale(1.1);
+}
+
+.voco-contact-form-container .form {
+  width: 100%;
+  max-width: 850px;
+  background-color: #051129;
+  border: 0.2px solid rgba(204, 184, 146, 0.418);
+  border-radius: 10px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.voco-contact-form-container .contact-form {
+  background-color: #15234d;
+  position: relative;
+}
+
+.voco-contact-form-container .circle {
+  border-radius: 50%;
+  background: linear-gradient(135deg, transparent 20%, #236099);
+  position: absolute;
+}
+
+.voco-contact-form-container .circle.one {
+  width: 130px;
+  height: 130px;
+  top: 130px;
+  right: -40px;
+}
+
+.voco-contact-form-container .circle.two {
+  width: 80px;
+  height: 80px;
+  top: 10px;
+  right: 30px;
+}
+
+.voco-contact-form-container .contact-form:before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background-color: #15234d;
+  transform: rotate(45deg);
+  top: 50px;
+  left: -13px;
+}
+
+.voco-contact-form-container form {
+  padding: 2.3rem 2.2rem;
+  z-index: 10;
+  overflow: hidden;
+  position: relative;
+}
+
+.voco-contact-form-container .title {
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-bottom: 0.7rem;
+}
+
+.voco-contact-form-container .contact-info .title {
+  color: #1abc9c;
+}
+
+.voco-contact-form-container .input-container {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.voco-contact-form-container .input {
+  width: 100%;
+  outline: none;
+  border: 1px solid #fafafa2c;
+  background: none;
+  padding: 0.6rem 1.2rem;
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.voco-contact-form-container textarea.input {
+  padding: 0.8rem 1.2rem;
+  min-height: 50px;
+  border-radius: 5px;
+  resize: none;
+  overflow-y: auto;
+}
+
+.voco-contact-form-container .input-container label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  padding: 0 8px;
+  color: #fafafa;
+  font-size: 0.9rem;
+  font-weight: 400;
+  pointer-events: none;
+  z-index: 2;
+  transition: 0.3s ease;
+  background-color: #15234d;
+}
+
+.voco-contact-form-container .input-container.textarea label {
+  top: 1rem;
+  transform: translateY(0);
+}
+
+/* CSS */
+.button-85 {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #0dca8b;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(1px);
+  -webkit-filter: blur(3px);
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 1s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #171b1f;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+.voco-contact-form-container .btn:hover {
+  background-color: transparent;
+  color: #fff;
+}
+
+.voco-contact-form-container .input-container span {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  padding: 0 0.4rem;
+  color: transparent;
+  pointer-events: none;
+  z-index: 500;
+}
+
+.voco-contact-form-container .input-container span:before,
+.voco-contact-form-container .input-container span:after {
+  content: "";
+  position: absolute;
+  width: 10%;
+  opacity: 0;
+  transition: 0.3s;
+  height: 5px;
+  /* background-color: #bc1a50; */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.voco-contact-form-container .input-container span:before {
+  left: 50%;
+}
+
+.voco-contact-form-container .input-container span:after {
+  right: 50%;
+}
+
+/* Focus styles */
+.voco-contact-form-container .input-container.focus label {
+  top: 0;
+  transform: translateY(-50%);
+  left: 25px;
+  font-size: 0.8rem;
+}
+
+.voco-contact-form-container .input-container.focus span:before,
+.voco-contact-form-container .input-container.focus span:after {
+  width: 50%;
+  opacity: 1;
+}
+
+.voco-contact-form-container .contact-info {
+  padding: 2.3rem 2.2rem;
+  position: relative;
+}
+
+.voco-contact-form-container .text {
+  color: #f3ecec;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.voco-contact-form-container .information {
+  display: flex;
+  color: #c9c1c1;
+  margin: 0.7rem 0;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.voco-contact-form-container .information i {
+  color: #1abc9c;
+}
+
+.voco-contact-form-container .icon {
+  width: 28px;
+  margin-right: 0.7rem;
+}
+
+.voco-contact-form-container .social-media {
+  padding: 2rem 0 0 0;
+}
+
+.voco-contact-form-container .social-media p {
+  color: #c9b9b9;
+}
+
+.voco-contact-form-container .social-icons {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.voco-contact-form-container .social-icons a {
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #1abc9c, #149279);
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 0.5rem;
+  transition: 0.3s;
+}
+
+.voco-contact-form-container .social-icons a:hover {
+  transform: scale(1.05);
+}
+
+.voco-contact-form-container .contact-info:before {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 100px;
+  border: 22px solid #1abc9c;
+  border-radius: 50%;
+  bottom: -77px;
+  right: 50px;
+  opacity: 0.3;
+}
+
+.voco-contact-form-container .square {
+  position: absolute;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(181%, 11%);
+  opacity: 0.2;
+}
+
+/* Media Queries */
+@media (max-width: 850px) {
+  .voco-contact-form-container .form {
+    grid-template-columns: 1fr;
+  }
+
+  .voco-contact-form-container .contact-info:before {
+    bottom: initial;
+    top: -75px;
+    right: 65px;
+    transform: scale(0.95);
+  }
+
+  .voco-contact-form-container .contact-form:before {
+    top: -13px;
+    left: initial;
+    right: 70px;
+  }
+
+  .voco-contact-form-container .square {
+    transform: translate(140%, 43%);
+    height: 350px;
+  }
+
+  .voco-contact-form-container .text {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  .voco-contact-form-container .social-media {
+    padding: 1.5rem 0 0 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .voco-contact-form-container {
+    padding: 1.5rem;
+  }
+
+  .voco-contact-form-container .contact-info:before {
+    display: none;
+  }
+
+  .voco-contact-form-container form,
+  .voco-contact-form-container .contact-info {
+    padding: 1.7rem 1.6rem;
+  }
+
+  .voco-contact-form-container .text,
+  .voco-contact-form-container .information,
+  .voco-contact-form-container .social-media p {
+    font-size: 0.8rem;
+  }
+
+  .voco-contact-form-container .title {
+    font-size: 1.15rem;
+  }
+
+  .voco-contact-form-container .social-icons a {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .voco-contact-form-container .icon {
+    width: 23px;
+  }
+
+  .voco-contact-form-container .input {
+    padding: 0.45rem 1.2rem;
+  }
+
+  .voco-contact-form-container .btn {
+    padding: 0.45rem 1.2rem;
+  }
+}
