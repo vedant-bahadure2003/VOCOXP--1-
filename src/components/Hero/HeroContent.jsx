@@ -124,7 +124,7 @@ const HeroContent = ({ currentSlide }) => {
         >
             {/* Pre-headline */}
             <motion.p
-                className="text-sm md:text-base uppercase tracking-[0.3em] text-cyan-300 mb-6 font-semibold"
+                className="text-sm md:text-xl uppercase tracking-[0.3em] text-cyan-300 mb-3 font-semibold"
                 style={{
                     textShadow: `
                         0 0 10px rgba(69, 214, 236, 0.8),

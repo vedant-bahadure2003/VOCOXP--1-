@@ -190,8 +190,8 @@ const ThreatOverlay = () => {
                 className="absolute inset-0"
                 style={{
                     backgroundImage: `
-                        linear-gradient(rgba(30, 64, 175, 0.06) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(30, 64, 175, 0.06) 1px, transparent 1px)
+                        linear-gradient(rgba(30, 64, 175, 0.06) 1px, transparent 5px),
+                        linear-gradient(90deg, rgba(30, 64, 175, 0.06) 1px, transparent 5px)
                     `,
                     backgroundSize: '40px 40px',
                 }}
