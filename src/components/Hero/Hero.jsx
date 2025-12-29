@@ -33,13 +33,13 @@ const Hero = () => {
   };
 
   // Parallax scroll effect
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
+  // const { scrollYProgress } = useScroll({
+  //   target: heroRef,
+  //   offset: ["start start", "end start"],
+  // });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
+  // const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  // const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
 
   // Image transition variants - Smooth crossfade
   const imageVariants = {
@@ -75,7 +75,7 @@ const Hero = () => {
       }}
     >
       {/* Background Images with Smooth Transitions */}
-      <motion.div className="absolute inset-0 z-0" style={{ y: backgroundY }}>
+      <motion.div className="absolute inset-0 z-0" style={{ y: 0 }}>
         <AnimatePresence initial={false}>
           <motion.div
             key={currentSlide}
@@ -145,7 +145,7 @@ const Hero = () => {
       <ThreatOverlay />
 
       {/* Particle Effects */}
-      <motion.div style={{ opacity: overlayOpacity }}>
+      <motion.div style={{ opacity: 1 }}>
         <ParticleEffect count={80} />
       </motion.div>
 
