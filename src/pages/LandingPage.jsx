@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/shared/Navbar';
 import Hero from '../components/Hero/Hero';
+import VideoShowcase from '../components/VideoShowcase/VideoShowcase';
 import About from '../components/About/About';
 import Privacy from '../components/Privacy/Privacy';
 import Enquiry from '../components/Enquiry/Enquiry';
@@ -15,11 +16,15 @@ const LandingPage = () => {
             {/* Hero Section - Threat Focus */}
             <Hero />
 
+
             {/* About Section - Risk Scenarios & Solution */}
             <About />
 
             {/* Privacy Section - Trust & Security */}
             <Privacy />
+
+            {/* Video Showcase - Product Demo */}
+            <VideoShowcase />
 
             {/* Enquiry Section - Contact Form */}
             <Enquiry />

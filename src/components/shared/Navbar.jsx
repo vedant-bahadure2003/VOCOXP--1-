@@ -27,8 +27,8 @@ const Navbar = () => {
             <motion.nav
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 
           ${isScrolled
-                        ? 'py-3 bg-white/90 backdrop-blur-lg border-b border-slate-200/50 shadow-sm'
-                        : 'py-5 bg-transparent'
+                        ? 'py-3 bg-white/70 backdrop-blur-lg border-b border-slate-200/50 shadow-sm'
+                        : 'py-3 bg-white/70 backdrop-blur-lg border-b border-slate-200/50 shadow-sm'
                     }`}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
@@ -46,10 +46,10 @@ const Navbar = () => {
                             group-hover:shadow-blue-500/20 transition-all duration-300">
                             <img src="/web/Images/logo-vocoxp2.png" alt="" />                        </div>
                         <span
-                            className={`text-xl font-bold transition-colors duration-300 ${isScrolled ? 'text-slate-800' : 'text-white'}`}
+                            className={`text-xl font-bold transition-colors duration-300 ${isScrolled ? 'text-black' : 'text-black'}`}
                             style={{ fontFamily: 'var(--font-display)' }}
                         >
-                            VOCO<span className={isScrolled ? 'text-blue-600' : 'text-blue-300'}>xP</span>
+                            VOCO<span className={isScrolled ? 'text-blue-600' : 'text-blue-600'}>xP</span>
                         </span>
                     </motion.a>
 
@@ -61,8 +61,8 @@ const Navbar = () => {
                                 href={link.href}
                                 className={`transition-colors text-sm font-medium relative group
                                     ${isScrolled
-                                        ? 'text-slate-600 hover:text-blue-600'
-                                        : 'text-white/90 hover:text-white'}`}
+                                        ? 'text-black hover:text-blue-600'
+                                        : 'text-black hover:text-blue-600'}`}
                                 whileHover={{ y: -2 }}
                             >
                                 {link.name}
