@@ -104,9 +104,10 @@ const Footer = () => {
                                 className="flex items-center gap-2 mb-5 group"
                                 whileHover={{ scale: 1.02 }}
                             >
-                                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
-                                    <Shield className="w-6 h-6 text-white" />
-                                </div>
+                                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 
+                            flex items-center justify-center group-hover:shadow-lg 
+                            group-hover:shadow-blue-500/20 transition-all duration-300">
+                                    <img src="/web/Images/logo-vocoxp2.png" alt="" />                        </div>
                                 <span
                                     className="text-2xl font-bold text-white"
                                     style={{ fontFamily: 'var(--font-display)' }}

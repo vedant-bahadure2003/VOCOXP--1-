@@ -145,7 +145,7 @@ const Enquiry = () => {
       />
 
       <motion.div
-        className="relative z-10 max-w-6xl mx-auto px-6"
+        className="relative z-10 max-w-7xl mx-auto px-6"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -186,114 +186,120 @@ const Enquiry = () => {
 
         {/* Main Form Area */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 items-start"
+          className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 items-start "
           variants={itemVariants}
         >
-          {/* Left Side - Info Cards */}
-          <div className="flex flex-col gap-5 lg:order-1 order-2">
+          {/* Left Side - Info Cards with Wave Route Structure */}
+          <div className="relative flex flex-col justify-between lg:order-1 order-2 h-full min-h-[450px] ">
+            {/* Decorative Wave Path SVG */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block"
+              preserveAspectRatio="none"
+              viewBox="0 0 300 450"
+            >
+              <motion.path
+                d="M 50 50 Q 250 100 250 225 Q 250 350 50 400"
+                fill="none"
+                stroke="url(#waveGradient)"
+                strokeWidth="2"
+                strokeDasharray="8 6"
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 0.4 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+              />
+              <defs>
+                <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#3b82f6" />
+                  <stop offset="50%" stopColor="#8b5cf6" />
+                  <stop offset="100%" stopColor="#10b981" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            {/* Card 1 - Left Position */}
             <motion.div
-              className="flex items-start gap-4 p-6 bg-white/90 border border-blue-900/5 rounded-2xl shadow-sm transition-all duration-300 hover:border-blue-500/20 hover:shadow-lg hover:shadow-blue-500/10"
+              className="relative z-10 flex items-start gap-4 p-5 bg-white/95 border border-blue-900/5 rounded-2xl shadow-sm transition-all duration-300 hover:border-blue-500/20 hover:shadow-lg hover:shadow-blue-500/10 lg:w-[85%] lg:self-start"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.5 }}
               whileHover={{ scale: 1.02, y: -5 }}
-              transition={{ type: "spring", stiffness: 400 }}
             >
               <div
-                className="flex items-center justify-center w-12 h-12 rounded-xl shrink-0 text-blue-700"
+                className="flex items-center justify-center w-11 h-11 rounded-xl shrink-0 text-blue-700"
                 style={{
                   background:
                     "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(30, 64, 175, 0.1) 100%)",
                 }}
               >
-                <Shield className="w-6 h-6" />
+                <Shield className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-base font-semibold text-slate-800 mb-1">
+                <h4 className="text-sm font-semibold text-slate-800 mb-0.5">
                   Enterprise Security
                 </h4>
-                <p className="text-sm text-slate-500 leading-relaxed">
+                <p className="text-xs text-slate-500 leading-relaxed">
                   Bank-grade encryption and compliance ready solutions
                 </p>
               </div>
             </motion.div>
 
+            {/* Card 2 - Right Position (Center-Right) */}
             <motion.div
-              className="flex items-start gap-4 p-6 bg-white/90 border border-blue-900/5 rounded-2xl shadow-sm transition-all duration-300 hover:border-blue-500/20 hover:shadow-lg hover:shadow-blue-500/10"
+              className="relative z-10 flex items-start gap-4 p-5 bg-white/95 border border-violet-900/5 rounded-2xl shadow-sm transition-all duration-300 hover:border-violet-500/20 hover:shadow-lg hover:shadow-violet-500/10 lg:w-[75%] lg:self-end"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5 }}
               whileHover={{ scale: 1.02, y: -5 }}
-              transition={{ type: "spring", stiffness: 400 }}
             >
               <div
-                className="flex items-center justify-center w-12 h-12 rounded-xl shrink-0 text-violet-600"
+                className="flex items-center justify-center w-11 h-11 rounded-xl shrink-0 text-violet-600"
                 style={{
                   background:
                     "linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%)",
                 }}
               >
-                <MessageSquare className="w-6 h-6" />
+                <MessageSquare className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-base font-semibold text-slate-800 mb-1">
+                <h4 className="text-sm font-semibold text-slate-800 mb-0.5">
                   24/7 Support
                 </h4>
-                <p className="text-sm text-slate-500 leading-relaxed">
+                <p className="text-xs text-slate-500 leading-relaxed">
                   Dedicated support team at your service round the clock
                 </p>
               </div>
             </motion.div>
 
+            {/* Card 3 - Left Position (Back to Left) */}
             <motion.div
-              className="flex items-start gap-4 p-6 bg-white/90 border border-blue-900/5 rounded-2xl shadow-sm transition-all duration-300 hover:border-blue-500/20 hover:shadow-lg hover:shadow-blue-500/10"
+              className="relative z-10 flex items-start gap-4 p-5 bg-white/95 border border-emerald-900/5 rounded-2xl shadow-sm transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/10 lg:w-[85%] lg:self-start"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 0.5 }}
               whileHover={{ scale: 1.02, y: -5 }}
-              transition={{ type: "spring", stiffness: 400 }}
             >
               <div
-                className="flex items-center justify-center w-12 h-12 rounded-xl shrink-0 text-emerald-600"
+                className="flex items-center justify-center w-11 h-11 rounded-xl shrink-0 text-emerald-600"
                 style={{
                   background:
                     "linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%)",
                 }}
               >
-                <CheckCircle className="w-6 h-6" />
+                <CheckCircle className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-base font-semibold text-slate-800 mb-1">
+                <h4 className="text-sm font-semibold text-slate-800 mb-0.5">
                   Quick Setup
                 </h4>
-                <p className="text-sm text-slate-500 leading-relaxed">
+                <p className="text-xs text-slate-500 leading-relaxed">
                   Get started in minutes with seamless integration
                 </p>
               </div>
             </motion.div>
-
-            {/* Trust Indicators */}
-            {/* <div
-                            className="mt-5 p-6 rounded-2xl border border-blue-500/10"
-                            style={{ background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(30, 64, 175, 0.03) 100%)' }}
-                        >
-                            <p className="text-sm text-slate-600 font-medium mb-3">Trusted by 500+ organizations worldwide</p>
-                            <div className="flex items-center">
-                                {[...Array(4)].map((_, i) => (
-                                    <motion.div
-                                        key={i}
-                                        className="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center text-white -mr-2.5"
-                                        style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)' }}
-                                        initial={{ scale: 0 }}
-                                        whileInView={{ scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.5 + i * 0.1, type: 'spring' }}
-                                    >
-                                        <User className="w-4 h-4" />
-                                    </motion.div>
-                                ))}
-                                <motion.span
-                                    className="ml-5 text-sm font-semibold text-blue-700"
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.9 }}
-                                >
-                                    +496
-                                </motion.span>
-                            </div>
-                        </div> */}
           </div>
 
           {/* Right Side - Form */}

@@ -1,131 +1,100 @@
-import React, { useMemo } from 'react';
-import { motion } from 'framer-motion';
+import React, { useMemo, memo } from 'react';
 
-const ParticleEffect = ({ count = 50 }) => {
-    // Generate particles with enhanced random properties
+/**
+ * Optimized ParticleEffect - Uses CSS animations for GPU acceleration
+ * Reduced particle count for better performance
+ */
+const ParticleEffect = memo(({ count = 25 }) => {
+    // Generate particles with random properties - memoized to prevent recalculation
     const particles = useMemo(() => {
         return Array.from({ length: count }, (_, i) => ({
             id: i,
             x: Math.random() * 100,
             y: Math.random() * 100,
-            size: Math.random() * 5 + 2,
-            duration: Math.random() * 12 + 8,
-            delay: Math.random() * 4,
-            opacity: Math.random() * 0.4 + 0.2,
+            size: Math.random() * 4 + 2,
+            duration: Math.random() * 10 + 8,
+            delay: Math.random() * 5,
+            opacity: Math.random() * 0.3 + 0.15,
+            drift: Math.random() * 40 - 20,
         }));
     }, [count]);
 
+    // Generate dust particles - reduced from 25 to 10
+    const dustParticles = useMemo(() => {
+        return Array.from({ length: 10 }, (_, i) => ({
+            id: i,
+            x: Math.random() * 100,
+            y: Math.random() * 100,
+            size: Math.random() * 3 + 1,
+            duration: Math.random() * 6 + 5,
+            delay: Math.random() * 3,
+            opacity: Math.random() * 0.4 + 0.1,
+        }));
+    }, []);
+
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-5">
-            {/* Enhanced Rising Particles with glow */}
+            {/* Rising Particles - CSS animated for GPU acceleration */}
             {particles.map((particle) => (
-                <motion.div
+                <div
                     key={particle.id}
-                    className="absolute rounded-full"
+                    className="absolute rounded-full particle-rise"
                     style={{
                         left: `${particle.x}%`,
                         top: `${particle.y}%`,
                         width: particle.size,
                         height: particle.size,
                         background: `rgba(59, 130, 246, ${particle.opacity})`,
-                        boxShadow: `0 0 ${particle.size * 2}px rgba(59, 130, 246, ${particle.opacity * 0.8})`,
-                    }}
-                    animate={{
-                        y: [-30, -150],
-                        x: [0, Math.random() * 60 - 30],
-                        opacity: [0, particle.opacity, particle.opacity * 0.8, 0],
-                        scale: [0.5, 1, 1.2, 0.8],
-                    }}
-                    transition={{
-                        duration: particle.duration,
-                        repeat: Infinity,
-                        delay: particle.delay,
-                        ease: 'easeOut',
+                        boxShadow: `0 0 ${particle.size * 2}px rgba(59, 130, 246, ${particle.opacity * 0.6})`,
+                        animationDuration: `${particle.duration}s`,
+                        animationDelay: `${particle.delay}s`,
+                        '--drift': `${particle.drift}px`,
+                        willChange: 'transform, opacity',
+                        transform: 'translateZ(0)',
                     }}
                 />
             ))}
 
-            {/* Enhanced Floating Dust/Accent Particles */}
-            {Array.from({ length: 25 }, (_, i) => {
-                const size = Math.random() * 4 + 1;
-                const opacity = Math.random() * 0.5 + 0.2;
-                return (
-                    <motion.div
-                        key={`dust-${i}`}
-                        className="absolute rounded-full"
-                        style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            width: size,
-                            height: size,
-                            background: `rgba(30, 64, 175, ${opacity})`,
-                            boxShadow: `0 0 ${size * 3}px rgba(30, 64, 175, ${opacity * 0.6})`,
-                        }}
-                        animate={{
-                            y: [0, -60, 0],
-                            x: [0, Math.random() * 40 - 20, 0],
-                            opacity: [opacity * 0.3, opacity, opacity * 0.3],
-                            scale: [0.8, 1.2, 0.8],
-                        }}
-                        transition={{
-                            duration: Math.random() * 8 + 6,
-                            repeat: Infinity,
-                            delay: Math.random() * 4,
-                            ease: 'easeInOut',
-                        }}
-                    />
-                );
-            })}
+            {/* Floating Dust Particles - CSS animated */}
+            {dustParticles.map((particle) => (
+                <div
+                    key={`dust-${particle.id}`}
+                    className="absolute rounded-full particle-float"
+                    style={{
+                        left: `${particle.x}%`,
+                        top: `${particle.y}%`,
+                        width: particle.size,
+                        height: particle.size,
+                        background: `rgba(30, 64, 175, ${particle.opacity})`,
+                        boxShadow: `0 0 ${particle.size * 2}px rgba(30, 64, 175, ${particle.opacity * 0.5})`,
+                        animationDuration: `${particle.duration}s`,
+                        animationDelay: `${particle.delay}s`,
+                        willChange: 'transform, opacity',
+                        transform: 'translateZ(0)',
+                    }}
+                />
+            ))}
 
-            {/* Enhanced Light Gradient Layers */}
-            <motion.div
-                className="absolute inset-0"
+            {/* Static Gradient Layers - No animation for performance */}
+            <div
+                className="absolute inset-0 gradient-pulse-slow"
                 style={{
-                    background: 'radial-gradient(ellipse at 50% 100%, rgba(59, 130, 246, 0.12) 0%, transparent 60%)',
-                }}
-                animate={{
-                    opacity: [0.4, 0.7, 0.4],
-                }}
-                transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
+                    background: 'radial-gradient(ellipse at 50% 100%, rgba(59, 130, 246, 0.1) 0%, transparent 60%)',
+                    willChange: 'opacity',
                 }}
             />
 
-            <motion.div
-                className="absolute inset-0"
+            <div
+                className="absolute inset-0 gradient-pulse-slow"
                 style={{
-                    background: 'radial-gradient(ellipse at 30% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%)',
-                }}
-                animate={{
-                    opacity: [0.3, 0.6, 0.3],
-                }}
-                transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: 2,
-                }}
-            />
-
-            <motion.div
-                className="absolute inset-0"
-                style={{
-                    background: 'radial-gradient(ellipse at 70% 50%, rgba(30, 64, 175, 0.08) 0%, transparent 50%)',
-                }}
-                animate={{
-                    opacity: [0.3, 0.6, 0.3],
-                }}
-                transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: 4,
+                    background: 'radial-gradient(ellipse at 30% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 50%)',
+                    animationDelay: '2s',
                 }}
             />
         </div>
     );
-};
+});
+
+ParticleEffect.displayName = 'ParticleEffect';
 
 export default ParticleEffect;

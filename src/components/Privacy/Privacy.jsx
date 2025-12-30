@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Shield, Lock, Eye, FileCheck, Server, UserCheck,
@@ -17,6 +17,15 @@ import digitalImg from "../../assets/doc/digital.webp";
 const Privacy = () => {
   const [activeDoc, setActiveDoc] = useState(0);
   const [hoveredFeature, setHoveredFeature] = useState(null);
+
+  // Auto-cycle document carousel every 2 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveDoc((prev) => (prev + 1) % 6);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const privacyFeatures = [
     {
@@ -80,34 +89,23 @@ const Privacy = () => {
   ];
 
   return (
-    <section id="privacy" className="relative py-20 md:py-32 overflow-hidden">
-      {/* Animated Background */}
+    <section id="privacy" className="relative py-12 overflow-hidden">
+      {/* Animated Background - CSS based for performance */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-white via-emerald-50/30 to-white" />
 
-        {/* Floating Security Orbs */}
-        <motion.div
-          className="absolute top-20 right-20 w-80 h-80 bg-emerald-400/15 rounded-full blur-3xl"
-          animate={{
-            x: [0, -30, 0],
-            y: [0, 20, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        {/* Floating Security Orbs - CSS animated for GPU acceleration */}
+        <div
+          className="absolute top-20 right-20 w-80 h-80 bg-emerald-400/15 rounded-full blur-3xl animate-float-orb"
+          style={{ willChange: 'transform' }}
         />
-        <motion.div
-          className="absolute bottom-40 left-10 w-64 h-64 bg-teal-400/20 rounded-full blur-3xl"
-          animate={{
-            x: [0, 40, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.15, 1],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        <div
+          className="absolute bottom-40 left-10 w-64 h-64 bg-teal-400/20 rounded-full blur-3xl animate-float-orb-slow"
+          style={{ willChange: 'transform' }}
         />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-emerald-300/10 to-cyan-300/10 rounded-full blur-3xl"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-emerald-300/10 to-cyan-300/10 rounded-full blur-3xl animate-float-orb-reverse"
+          style={{ willChange: 'transform' }}
         />
 
         {/* Grid Pattern */}
@@ -119,6 +117,7 @@ const Privacy = () => {
           }}
         />
       </div>
+
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Section Header */}
@@ -268,8 +267,8 @@ const Privacy = () => {
                   <motion.button
                     key={index}
                     className={`flex-shrink-0 w-16 h-12 rounded-xl overflow-hidden border-2 transition-all ${activeDoc === index
-                        ? "border-emerald-500 shadow-lg shadow-emerald-500/20"
-                        : "border-transparent opacity-60 hover:opacity-100"
+                      ? "border-emerald-500 shadow-lg shadow-emerald-500/20"
+                      : "border-transparent opacity-60 hover:opacity-100"
                       }`}
                     onClick={() => setActiveDoc(index)}
                     whileHover={{ scale: 1.05 }}
@@ -317,8 +316,8 @@ const Privacy = () => {
                 <motion.div
                   key={index}
                   className={`relative p-5 rounded-2xl cursor-pointer transition-all duration-300 ${isHovered
-                      ? "bg-white shadow-xl border-2 border-emerald-200"
-                      : "bg-white/60 border border-slate-200/50 hover:bg-white hover:shadow-lg"
+                    ? "bg-white shadow-xl border-2 border-emerald-200"
+                    : "bg-white/60 border border-slate-200/50 hover:bg-white hover:shadow-lg"
                     }`}
                   onMouseEnter={() => setHoveredFeature(index)}
                   onMouseLeave={() => setHoveredFeature(null)}
@@ -369,7 +368,7 @@ const Privacy = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="max-w-4xl mx-auto p-8 md:p-10 rounded-3xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200/30">
+          <div className="max-w-4xl mx-auto p-6 rounded-3xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200/30">
             <div className="flex flex-wrap justify-center gap-4 mb-6">
               {["GDPR", "ISO 27001", "SOC 2", "HIPAA Ready"].map((badge, index) => (
                 <motion.div

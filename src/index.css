@@ -569,11 +569,134 @@ h1, h2, h3, h4, h5, h6 {
   animation: image-reveal 1s ease-out forwards;
 }
 
+/* ========== PERFORMANCE OPTIMIZED ANIMATIONS ========== */
+
+/* Particle Rise Animation - GPU accelerated */
+@keyframes particle-rise {
+  0% {
+    transform: translateZ(0) translateY(0) translateX(0) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateZ(0) translateY(-120px) translateX(var(--drift, 0px)) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.particle-rise {
+  animation: particle-rise linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Particle Float Animation - GPU accelerated */
+@keyframes particle-float {
+  0%, 100% {
+    transform: translateZ(0) translateY(0) translateX(0) scale(0.9);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateZ(0) translateY(-40px) translateX(10px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.particle-float {
+  animation: particle-float ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Slow Gradient Pulse - CPU friendly */
+@keyframes gradient-pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.gradient-pulse-slow {
+  animation: gradient-pulse 6s ease-in-out infinite;
+  will-change: opacity;
+}
+
+/* Floating Orb Animation - CSS based for performance */
+@keyframes float-orb {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translateZ(0) translate(20px, -15px) scale(1.05);
+  }
+  66% {
+    transform: translateZ(0) translate(-15px, 10px) scale(0.98);
+  }
+}
+
+.animate-float-orb {
+  animation: float-orb 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-orb-slow {
+  animation: float-orb 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-orb-reverse {
+  animation: float-orb 14s ease-in-out infinite reverse;
+  will-change: transform;
+}
+
+/* GPU Acceleration Utilities */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
 /* ========== RESPONSIVE UTILITIES ========== */
 @media (max-width: 768px) {
   .btn-primary, .btn-secondary {
     padding: 12px 24px;
     font-size: 14px;
   }
+  
+  /* Reduce animations on mobile for performance */
+  .particle-rise,
+  .particle-float {
+    animation-duration: 15s !important;
+  }
+  
+  .animate-float-orb,
+  .animate-float-orb-slow,
+  .animate-float-orb-reverse {
+    animation: none;
+  }
 }
 
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .particle-rise,
+  .particle-float,
+  .gradient-pulse-slow,
+  .animate-float-orb,
+  .animate-float-orb-slow,
+  .animate-float-orb-reverse {
+    animation: none;
+  }
+}

@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Shield } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = memo(() => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const lastScrollRef = useRef(0);
+    const ticking = useRef(false);
 
     const navLinks = [
         { name: 'Home', href: '#hero' },
@@ -13,13 +15,32 @@ const Navbar = () => {
         { name: 'Contact', href: '#enquiry' },
     ];
 
+    // Throttled scroll handler for better performance
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            lastScrollRef.current = window.scrollY;
+
+            if (!ticking.current) {
+                window.requestAnimationFrame(() => {
+                    setIsScrolled(lastScrollRef.current > 50);
+                    ticking.current = false;
+                });
+                ticking.current = true;
+            }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Memoized toggle handler
+    const toggleMobileMenu = useCallback(() => {
+        setIsMobileMenuOpen(prev => !prev);
+    }, []);
+
+    // Memoized close handler
+    const closeMobileMenu = useCallback(() => {
+        setIsMobileMenuOpen(false);
     }, []);
 
     return (
@@ -28,7 +49,7 @@ const Navbar = () => {
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 
           ${isScrolled
                         ? 'py-3 bg-white/70 backdrop-blur-lg border-b border-slate-200/50 shadow-sm'
-                        : 'py-3 bg-white/70 backdrop-blur-lg border-b border-slate-200/50 shadow-sm'
+                        : 'py-3 bg-transparent '
                     }`}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
@@ -46,10 +67,10 @@ const Navbar = () => {
                             group-hover:shadow-blue-500/20 transition-all duration-300">
                             <img src="/web/Images/logo-vocoxp2.png" alt="" />                        </div>
                         <span
-                            className={`text-xl font-bold transition-colors duration-300 ${isScrolled ? 'text-black' : 'text-black'}`}
+                            className={`text-xl font-bold transition-colors duration-300 ${isScrolled ? 'text-black' : 'text-white'}`}
                             style={{ fontFamily: 'var(--font-display)' }}
                         >
-                            VOCO<span className={isScrolled ? 'text-blue-600' : 'text-blue-600'}>xP</span>
+                            VOCO<span className={isScrolled ? 'text-blue-600' : 'text-blue-300'}>xP</span>
                         </span>
                     </motion.a>
 
@@ -62,7 +83,7 @@ const Navbar = () => {
                                 className={`transition-colors text-sm font-medium relative group
                                     ${isScrolled
                                         ? 'text-black hover:text-blue-600'
-                                        : 'text-black hover:text-blue-600'}`}
+                                        : 'text-white hover:text-blue-600'}`}
                                 whileHover={{ y: -2 }}
                             >
                                 {link.name}
@@ -86,7 +107,7 @@ const Navbar = () => {
                         className={`md:hidden p-2 transition-colors ${isScrolled
                             ? 'text-slate-600 hover:text-blue-600'
                             : 'text-white hover:text-blue-300'}`}
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        onClick={toggleMobileMenu}
                         whileTap={{ scale: 0.95 }}
                     >
                         {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -107,7 +128,7 @@ const Navbar = () => {
                         {/* Backdrop */}
                         <div
                             className="absolute inset-0 bg-slate-900/20 backdrop-blur-sm"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            onClick={closeMobileMenu}
                         />
 
                         {/* Menu Panel */}
@@ -125,7 +146,7 @@ const Navbar = () => {
                                         href={link.href}
                                         className="text-slate-700 hover:text-blue-600 text-lg font-medium py-2 
                                border-b border-slate-200/50 last:border-0"
-                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        onClick={closeMobileMenu}
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: index * 0.1 }}
@@ -137,7 +158,7 @@ const Navbar = () => {
                                 <motion.a
                                     href="#enquiry"
                                     className="btn-primary text-center mt-2"
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    onClick={closeMobileMenu}
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.4 }}
@@ -151,6 +172,9 @@ const Navbar = () => {
             </AnimatePresence>
         </>
     );
-};
+});
+
+Navbar.displayName = 'Navbar';
 
 export default Navbar;
+

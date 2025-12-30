@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 
 /**
- * ScrollReveal - Reusable wrapper for scroll-triggered animations
+ * ScrollReveal - Optimized reusable wrapper for scroll-triggered animations
  * 
  * @param {Object} props
  * @param {React.ReactNode} props.children - Child elements to animate
@@ -12,27 +12,27 @@ import { motion } from 'framer-motion';
  * @param {string} props.className - Additional CSS classes
  * @param {boolean} props.once - Whether to animate only once (default: true)
  */
-const ScrollReveal = ({
+const ScrollReveal = memo(({
     children,
     direction = 'up',
     delay = 0,
-    duration = 0.6,
+    duration = 0.5, // Reduced from 0.6 for snappier feel
     className = '',
     once = true,
 }) => {
-    // Calculate initial position based on direction
+    // Calculate initial position based on direction - reduced offsets for better performance
     const getInitialPosition = () => {
         switch (direction) {
             case 'up':
-                return { y: 40, x: 0 };
+                return { y: 20, x: 0 }; // Reduced from 40
             case 'down':
-                return { y: -40, x: 0 };
+                return { y: -20, x: 0 }; // Reduced from -40
             case 'left':
-                return { y: 0, x: 40 };
+                return { y: 0, x: 20 }; // Reduced from 40
             case 'right':
-                return { y: 0, x: -40 };
+                return { y: 0, x: -20 }; // Reduced from -40
             default:
-                return { y: 40, x: 0 };
+                return { y: 20, x: 0 };
         }
     };
 
@@ -62,11 +62,15 @@ const ScrollReveal = ({
             variants={variants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once, margin: '-50px' }}
+            viewport={{ once, margin: '-30px', amount: 0.1 }}
+            style={{ willChange: 'transform, opacity' }}
         >
             {children}
         </motion.div>
     );
-};
+});
+
+ScrollReveal.displayName = 'ScrollReveal';
 
 export default ScrollReveal;
+

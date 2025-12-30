@@ -5,8 +5,8 @@ import { Shield, ChevronRight, Sparkles, Zap, Target, Lock, Eye, Users } from "l
 // Import images from assets
 import verificationImg from "../../assets/carasoul/ver1.png";
 import marketingImg from "../../assets/carasoul/mar2.png";
-import usedImg1 from "../../assets/usedVocoXp/used1.png";
-import usedImg2 from "../../assets/usedVocoXp/used2.png";
+import usedImg1 from "../../assets/usedVocoXp/about.png";
+import usedImg2 from "../../assets/usedVocoXp/about2.png";
 
 const About = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -18,6 +18,7 @@ const About = () => {
       description: "Real-time identity authentication with advanced AI-powered document scanning and facial recognition technology.",
       color: "from-blue-500 to-cyan-400",
       bgColor: "bg-gradient-to-br from-blue-500/10 to-cyan-400/10",
+      video: "https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4",
     },
     {
       icon: Eye,
@@ -25,6 +26,7 @@ const About = () => {
       description: "24/7 surveillance integration with instant alerts and comprehensive visitor tracking across all entry points.",
       color: "from-purple-500 to-pink-400",
       bgColor: "bg-gradient-to-br from-purple-500/10 to-pink-400/10",
+      video: "https://www.pexels.com/download/video/10620278/",
     },
     {
       icon: Lock,
@@ -32,6 +34,7 @@ const About = () => {
       description: "Military-grade encryption ensuring your data remains protected with zero compromises on security.",
       color: "from-emerald-500 to-teal-400",
       bgColor: "bg-gradient-to-br from-emerald-500/10 to-teal-400/10",
+      video: "https://www.pexels.com/download/video/854322/",
     },
     {
       icon: Users,
@@ -39,6 +42,7 @@ const About = () => {
       description: "Every entry, exit, and interaction is logged and traceable, providing full accountability and compliance.",
       color: "from-orange-500 to-amber-400",
       bgColor: "bg-gradient-to-br from-orange-500/10 to-amber-400/10",
+      video: "https://www.pexels.com/download/video/6962695/",
     },
   ];
 
@@ -63,35 +67,25 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="relative py-20 md:py-32 overflow-hidden">
-      {/* Animated Background */}
+    <section id="about" className="relative py-20 md:py-20 overflow-hidden">
+      {/* Animated Background - CSS based for performance */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-blue-50/30" />
 
-        {/* Floating Orbs */}
-        <motion.div
-          className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        {/* Floating Orbs - CSS animated for GPU acceleration */}
+        <div
+          className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-float-orb"
+          style={{ willChange: 'transform' }}
         />
-        <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/15 rounded-full blur-3xl"
-          animate={{
-            x: [0, -40, 0],
-            y: [0, -20, 0],
-            scale: [1, 1.15, 1],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        <div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/15 rounded-full blur-3xl animate-float-orb-slow"
+          style={{ willChange: 'transform' }}
         />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-cyan-400/10 to-blue-400/10 rounded-full blur-3xl"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-cyan-400/10 to-blue-400/10 rounded-full blur-3xl animate-float-orb-reverse"
+          style={{ willChange: 'transform' }}
         />
+
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -207,6 +201,10 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
+          <div
+            className="absolute w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-float-orb"
+            style={{ willChange: 'transform' }}
+          />
           <div className="text-center mb-12">
             <motion.div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-100 to-teal-100 border border-emerald-200/50 mb-4"
@@ -245,9 +243,7 @@ const About = () => {
                   >
                     <div className="flex items-start gap-4">
                       <div className={`w-14 h-14 rounded-xl ${feature.bgColor} flex items-center justify-center flex-shrink-0`}>
-                        <Icon className={`w-7 h-7 bg-gradient-to-r ${feature.color} text-transparent `}
-                          style={{ stroke: "url(#gradient-" + index + ")" }} />
-                        <svg width="0" height="0">
+                        <svg width="0" height="0" className="absolute">
                           <defs>
                             <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
                               <stop offset="0%" style={{ stopColor: index === 0 ? "#3b82f6" : index === 1 ? "#a855f7" : index === 2 ? "#10b981" : "#f97316" }} />
@@ -255,6 +251,10 @@ const About = () => {
                             </linearGradient>
                           </defs>
                         </svg>
+                        <Icon
+                          className="w-7 h-7"
+                          style={{ stroke: `url(#gradient-${index})` }}
+                        />
                       </div>
                       <div className="flex-1">
                         <h4 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h4>
@@ -286,7 +286,7 @@ const About = () => {
 
             {/* Feature Showcase */}
             <motion.div
-              className="relative lg:sticky lg:top-32"
+              className="relative lg:sticky lg:top-32 "
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -301,8 +301,30 @@ const About = () => {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
                 >
+                  {/* Background Video */}
+                  <motion.div
+                    className="absolute inset-0 overflow-hidden"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <video
+                      key={features[activeFeature].video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover scale-110"
+                    >
+                      <source src={features[activeFeature].video} type="video/mp4" />
+                    </video>
+                    {/* Dark Overlay for readability */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/70 to-slate-800/80" />
+                  </motion.div>
+
                   {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-10">
+                  <div className="absolute inset-0 opacity-10 z-10">
                     <div className="absolute inset-0" style={{
                       backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
                       backgroundSize: '32px 32px'
@@ -311,7 +333,7 @@ const About = () => {
 
                   {/* Dynamic Icon */}
                   <motion.div
-                    className={`w-24 h-24 rounded-2xl bg-gradient-to-br ${features[activeFeature].color} flex items-center justify-center mb-6 shadow-lg`}
+                    className={`relative z-20 w-24 h-24 rounded-2xl bg-gradient-to-br ${features[activeFeature].color} flex items-center justify-center mb-6 shadow-lg backdrop-blur-sm`}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.2, type: "spring" }}
@@ -319,19 +341,19 @@ const About = () => {
                     {React.createElement(features[activeFeature].icon, { className: "w-12 h-12 text-white" })}
                   </motion.div>
 
-                  <h4 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: "var(--font-display)", color: "#ffffff" }}>
+                  <h4 className="relative z-20 text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: "var(--font-display)", color: "#ffffff" }}>
                     {features[activeFeature].title}
                   </h4>
-                  <p className="text-slate-300 text-lg leading-relaxed mb-6">
+                  <p className="relative z-20 text-slate-300 text-lg leading-relaxed mb-6">
                     {features[activeFeature].description}
                   </p>
 
                   {/* Feature Highlights */}
-                  <div className="flex flex-wrap gap-3">
+                  <div className="relative z-20 flex flex-wrap gap-3">
                     {["Fast", "Secure", "Reliable", "Scalable"].map((tag, i) => (
                       <motion.span
                         key={tag}
-                        className="px-4 py-2 bg-white/10 rounded-full text-white/80 text-sm font-medium"
+                        className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/80 text-sm font-medium border border-white/10"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 + i * 0.1 }}
@@ -342,7 +364,7 @@ const About = () => {
                   </div>
 
                   {/* Decorative Glow */}
-                  <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${features[activeFeature].color} rounded-full blur-3xl opacity-20`} />
+                  <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${features[activeFeature].color} rounded-full blur-3xl opacity-30 z-10`} />
                 </motion.div>
               </AnimatePresence>
             </motion.div>

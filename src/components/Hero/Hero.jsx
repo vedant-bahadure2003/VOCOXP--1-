@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback, memo } from "react";
 import {
   motion,
   useScroll,
@@ -9,7 +9,7 @@ import ThreatOverlay from "./ThreatOverlay";
 import ParticleEffect from "./ParticleEffect";
 import { HeroContent, SlideIndicators, heroSlides } from "./HeroContent";
 
-const Hero = () => {
+const Hero = memo(() => {
   const heroRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -25,12 +25,12 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [isAutoPlaying, currentSlide]);
 
-  // Pause autoplay on user interaction, resume after 10 seconds
-  const handleSlideChange = (index) => {
+  // Pause autoplay on user interaction, resume after 10 seconds - memoized
+  const handleSlideChange = useCallback((index) => {
     setCurrentSlide(index);
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
+  }, []);
 
   // Parallax scroll effect
   // const { scrollYProgress } = useScroll({
@@ -225,6 +225,8 @@ const Hero = () => {
       />
     </section>
   );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;

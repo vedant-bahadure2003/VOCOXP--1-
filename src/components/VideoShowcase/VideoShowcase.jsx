@@ -116,28 +116,18 @@ const VideoShowcase = () => {
             id="video-showcase"
             className="relative py-16 md:py-24 overflow-hidden"
         >
-            {/* Background matching About/Privacy style */}
+            {/* Background matching About/Privacy style - CSS animated for performance */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/40 to-white" />
 
-                {/* Floating Orbs - Blue/Purple theme */}
-                <motion.div
-                    className="absolute top-10 left-10 w-72 h-72 bg-blue-400/15 rounded-full blur-3xl"
-                    animate={{
-                        x: [0, 40, 0],
-                        y: [0, 20, 0],
-                        scale: [1, 1.1, 1],
-                    }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                {/* Floating Orbs - CSS animated for GPU acceleration */}
+                <div
+                    className="absolute top-10 left-10 w-72 h-72 bg-blue-400/15 rounded-full blur-3xl animate-float-orb"
+                    style={{ willChange: 'transform' }}
                 />
-                <motion.div
-                    className="absolute bottom-10 right-10 w-80 h-80 bg-purple-400/15 rounded-full blur-3xl"
-                    animate={{
-                        x: [0, -30, 0],
-                        y: [0, -25, 0],
-                        scale: [1, 1.15, 1],
-                    }}
-                    transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+                <div
+                    className="absolute bottom-10 right-10 w-80 h-80 bg-purple-400/15 rounded-full blur-3xl animate-float-orb-slow"
+                    style={{ willChange: 'transform' }}
                 />
 
                 {/* Grid Pattern */}
@@ -149,6 +139,7 @@ const VideoShowcase = () => {
                     }}
                 />
             </div>
+
 
             <div className="relative z-10 max-w-5xl mx-auto px-6">
                 {/* Section Header - Matching style */}
