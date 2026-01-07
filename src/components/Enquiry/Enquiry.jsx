@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Send,
@@ -35,20 +34,46 @@ const Enquiry = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const serviceId = "service_fi6or3s";
-    const templateId = "template_41yxhgb";
-    const publicKey = "e8WomHlyLBg271ltc";
-
-    // Prepare template params for EmailJS
-    const templateParams = {
-      name: formData.name,
-      email: formData.email,
-      organization: formData.organization,
-      message: formData.message,
-    };
+    // Build email HTML template
+    const emailHtml = `
+      <p>Dear Team,</p>
+      <p>A new enquiry has been submitted through the VOCOxP website contact form.</p>
+      <h4>Enquiry Details:</h4>
+      <ul>
+        <li><strong>Name:</strong> ${formData.name}</li>
+        <li><strong>Email:</strong> ${formData.email}</li>
+        <li><strong>Organization:</strong> ${
+          formData.organization || "N/A"
+        }</li>
+        <li><strong>Message:</strong> ${formData.message}</li>
+      </ul>
+      <p>Please respond to this enquiry at your earliest convenience.</p>
+      <p><b>VOCOxP Website<br>Micro Integrated Semi Conductor Systems Pvt. Ltd.</b></p>
+    `;
 
     try {
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      const response = await fetch(
+        "https://vocoxp.staffhandler.com/vocoxp/tenant/tenant_backend/api/tenant/email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to: "support@microintegrated.in",
+            subject: `VOCOxP Website Enquiry from ${formData.name} - ${
+              formData.organization || "Individual"
+            }`,
+            html: emailHtml,
+            from: '"VOCOxP Website" <transactions@mounarchtech.com>',
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to send enquiry");
+      }
+
       setIsSubmitted(true);
       setFormData({ name: "", email: "", organization: "", message: "" });
     } catch (error) {
@@ -209,7 +234,13 @@ const Enquiry = () => {
                 transition={{ duration: 1.5, ease: "easeInOut" }}
               />
               <defs>
-                <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <linearGradient
+                  id="waveGradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="0%"
+                  y2="100%"
+                >
                   <stop offset="0%" stopColor="#3b82f6" />
                   <stop offset="50%" stopColor="#8b5cf6" />
                   <stop offset="100%" stopColor="#10b981" />

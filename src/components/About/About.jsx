@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, ChevronRight, Sparkles, Zap, Target, Lock, Eye, Users } from "lucide-react";
+import {
+  Shield,
+  ChevronRight,
+  Sparkles,
+  Zap,
+  Target,
+  Lock,
+  Eye,
+  Users,
+} from "lucide-react";
 
 // Import images from assets
-import verificationImg from "../../assets/carasoul/ver1.png";
-import marketingImg from "../../assets/carasoul/mar2.png";
 import usedImg1 from "../../assets/usedVocoXp/about.png";
 import usedImg2 from "../../assets/usedVocoXp/about2.png";
 
@@ -15,15 +22,18 @@ const About = () => {
     {
       icon: Shield,
       title: "Digital Identity Verification",
-      description: "Real-time identity authentication with advanced AI-powered document scanning and facial recognition technology.",
+      description:
+        "Real-time identity authentication with advanced AI-powered document scanning and facial recognition technology.",
       color: "from-blue-500 to-cyan-400",
       bgColor: "bg-gradient-to-br from-blue-500/10 to-cyan-400/10",
-      video: "https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4",
+      video:
+        "https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4",
     },
     {
       icon: Eye,
       title: "Real-time Monitoring",
-      description: "24/7 surveillance integration with instant alerts and comprehensive visitor tracking across all entry points.",
+      description:
+        "24/7 surveillance integration with instant alerts and comprehensive visitor tracking across all entry points.",
       color: "from-purple-500 to-pink-400",
       bgColor: "bg-gradient-to-br from-purple-500/10 to-pink-400/10",
       video: "https://www.pexels.com/download/video/10620278/",
@@ -31,7 +41,8 @@ const About = () => {
     {
       icon: Lock,
       title: "End-to-End Encryption",
-      description: "Military-grade encryption ensuring your data remains protected with zero compromises on security.",
+      description:
+        "Military-grade encryption ensuring your data remains protected with zero compromises on security.",
       color: "from-emerald-500 to-teal-400",
       bgColor: "bg-gradient-to-br from-emerald-500/10 to-teal-400/10",
       video: "https://www.pexels.com/download/video/854322/",
@@ -39,7 +50,8 @@ const About = () => {
     {
       icon: Users,
       title: "Complete Audit Trail",
-      description: "Every entry, exit, and interaction is logged and traceable, providing full accountability and compliance.",
+      description:
+        "Every entry, exit, and interaction is logged and traceable, providing full accountability and compliance.",
       color: "from-orange-500 to-amber-400",
       bgColor: "bg-gradient-to-br from-orange-500/10 to-amber-400/10",
       video: "https://www.pexels.com/download/video/6962695/",
@@ -55,14 +67,22 @@ const About = () => {
 
   const useCases = [
     {
-      image: verificationImg,
-      title: "Instant Verification",
-      description: "Verify identities in seconds with our advanced mobile technology",
+      image: "/web/Images/borrow-money.png",
+      title: "Redefine Trust in Friendship",
+      description:
+        "Did you check their credibility before handing over your hard-earned money? Verify their background instantly with VOCOxP",
     },
     {
-      image: marketingImg,
-      title: "Seamless Integration",
-      description: "Works with your existing security infrastructure effortlessly",
+      image: "/web/Images/hostel-threat.png",
+      title: "Is Your Child Safe in Hostel?",
+      description:
+        "Do you know who your children are living with? Ensure their safety by verifying hostel staff and fellow residents",
+    },
+    {
+      image: "/web/Images/blackmail.png",
+      title: "Do You Really Know Your Partner?",
+      description:
+        "Love is blind, but you don't have to be. Verify their past before it becomes your future problem",
     },
   ];
 
@@ -75,17 +95,16 @@ const About = () => {
         {/* Floating Orbs - CSS animated for GPU acceleration */}
         <div
           className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-float-orb"
-          style={{ willChange: 'transform' }}
+          style={{ willChange: "transform" }}
         />
         <div
           className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/15 rounded-full blur-3xl animate-float-orb-slow"
-          style={{ willChange: 'transform' }}
+          style={{ willChange: "transform" }}
         />
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-cyan-400/10 to-blue-400/10 rounded-full blur-3xl animate-float-orb-reverse"
-          style={{ willChange: 'transform' }}
+          style={{ willChange: "transform" }}
         />
-
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -106,7 +125,9 @@ const About = () => {
               transition={{ delay: 0.2 }}
             >
               <Sparkles className="w-4 h-4 text-blue-600" />
-              <span className="text-blue-700 text-sm font-semibold">About VOCOxP</span>
+              <span className="text-blue-700 text-sm font-semibold">
+                About VOCOxP
+              </span>
             </motion.div>
 
             <h2
@@ -121,9 +142,10 @@ const About = () => {
             </h2>
 
             <p className="text-slate-600 text-lg md:text-xl leading-relaxed mb-8">
-              VOCOxP transforms how organizations verify identities and manage access.
-              Our cutting-edge platform combines AI-powered verification with seamless
-              user experience, ensuring safety without sacrificing convenience.
+              VOCOxP transforms how organizations verify identities and manage
+              access. Our cutting-edge platform combines AI-powered verification
+              with seamless user experience, ensuring safety without sacrificing
+              convenience.
             </p>
 
             {/* Stats Grid */}
@@ -140,7 +162,9 @@ const About = () => {
                   <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
                     {stat.value}
                   </div>
-                  <div className="text-xs md:text-sm text-slate-500 mt-1">{stat.label}</div>
+                  <div className="text-xs md:text-sm text-slate-500 mt-1">
+                    {stat.label}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -177,7 +201,10 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
                 animate={{ y: [0, -10, 0] }}
-                style={{ animationDuration: "3s", animationIterationCount: "infinite" }}
+                style={{
+                  animationDuration: "3s",
+                  animationIterationCount: "infinite",
+                }}
               >
                 <img
                   src={usedImg2}
@@ -203,7 +230,7 @@ const About = () => {
         >
           <div
             className="absolute w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-float-orb"
-            style={{ willChange: 'transform' }}
+            style={{ willChange: "transform" }}
           />
           <div className="text-center mb-12">
             <motion.div
@@ -213,9 +240,14 @@ const About = () => {
               viewport={{ once: true }}
             >
               <Zap className="w-4 h-4 text-emerald-600" />
-              <span className="text-emerald-700 text-sm font-semibold">Core Features</span>
+              <span className="text-emerald-700 text-sm font-semibold">
+                Core Features
+              </span>
             </motion.div>
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900" style={{ fontFamily: "var(--font-display)" }}>
+            <h3
+              className="text-3xl md:text-4xl font-bold text-slate-900"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
               Powerful Capabilities at Your Fingertips
             </h3>
           </div>
@@ -230,10 +262,11 @@ const About = () => {
                 return (
                   <motion.div
                     key={index}
-                    className={`relative p-6 rounded-2xl cursor-pointer transition-all duration-300 ${isActive
-                      ? "bg-white shadow-xl shadow-blue-500/10 border-2 border-blue-200"
-                      : "bg-white/50 border border-slate-200/50 hover:bg-white hover:shadow-lg"
-                      }`}
+                    className={`relative p-6 rounded-2xl cursor-pointer transition-all duration-300 ${
+                      isActive
+                        ? "bg-white shadow-xl shadow-blue-500/10 border-2 border-blue-200"
+                        : "bg-white/50 border border-slate-200/50 hover:bg-white hover:shadow-lg"
+                    }`}
                     onClick={() => setActiveFeature(index)}
                     whileHover={{ x: 8 }}
                     initial={{ opacity: 0, x: -30 }}
@@ -242,12 +275,44 @@ const About = () => {
                     transition={{ delay: index * 0.1 }}
                   >
                     <div className="flex items-start gap-4">
-                      <div className={`w-14 h-14 rounded-xl ${feature.bgColor} flex items-center justify-center flex-shrink-0`}>
+                      <div
+                        className={`w-14 h-14 rounded-xl ${feature.bgColor} flex items-center justify-center flex-shrink-0`}
+                      >
                         <svg width="0" height="0" className="absolute">
                           <defs>
-                            <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" style={{ stopColor: index === 0 ? "#3b82f6" : index === 1 ? "#a855f7" : index === 2 ? "#10b981" : "#f97316" }} />
-                              <stop offset="100%" style={{ stopColor: index === 0 ? "#22d3ee" : index === 1 ? "#ec4899" : index === 2 ? "#14b8a6" : "#fbbf24" }} />
+                            <linearGradient
+                              id={`gradient-${index}`}
+                              x1="0%"
+                              y1="0%"
+                              x2="100%"
+                              y2="100%"
+                            >
+                              <stop
+                                offset="0%"
+                                style={{
+                                  stopColor:
+                                    index === 0
+                                      ? "#3b82f6"
+                                      : index === 1
+                                      ? "#a855f7"
+                                      : index === 2
+                                      ? "#10b981"
+                                      : "#f97316",
+                                }}
+                              />
+                              <stop
+                                offset="100%"
+                                style={{
+                                  stopColor:
+                                    index === 0
+                                      ? "#22d3ee"
+                                      : index === 1
+                                      ? "#ec4899"
+                                      : index === 2
+                                      ? "#14b8a6"
+                                      : "#fbbf24",
+                                }}
+                              />
                             </linearGradient>
                           </defs>
                         </svg>
@@ -257,14 +322,22 @@ const About = () => {
                         />
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h4>
-                        <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
+                        <h4 className="text-lg font-bold text-slate-900 mb-2">
+                          {feature.title}
+                        </h4>
+                        <p className="text-slate-600 text-sm leading-relaxed">
+                          {feature.description}
+                        </p>
                       </div>
                       <motion.div
                         animate={{ x: isActive ? 5 : 0 }}
                         className="flex-shrink-0"
                       >
-                        <ChevronRight className={`w-5 h-5 transition-colors ${isActive ? "text-blue-600" : "text-slate-400"}`} />
+                        <ChevronRight
+                          className={`w-5 h-5 transition-colors ${
+                            isActive ? "text-blue-600" : "text-slate-400"
+                          }`}
+                        />
                       </motion.div>
                     </div>
 
@@ -317,7 +390,10 @@ const About = () => {
                       playsInline
                       className="absolute inset-0 w-full h-full object-cover scale-110"
                     >
-                      <source src={features[activeFeature].video} type="video/mp4" />
+                      <source
+                        src={features[activeFeature].video}
+                        type="video/mp4"
+                      />
                     </video>
                     {/* Dark Overlay for readability */}
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/70 to-slate-800/80" />
@@ -325,10 +401,13 @@ const About = () => {
 
                   {/* Background Pattern */}
                   <div className="absolute inset-0 opacity-10 z-10">
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
-                      backgroundSize: '32px 32px'
-                    }} />
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+                        backgroundSize: "32px 32px",
+                      }}
+                    />
                   </div>
 
                   {/* Dynamic Icon */}
@@ -338,10 +417,18 @@ const About = () => {
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.2, type: "spring" }}
                   >
-                    {React.createElement(features[activeFeature].icon, { className: "w-12 h-12 text-white" })}
+                    {React.createElement(features[activeFeature].icon, {
+                      className: "w-12 h-12 text-white",
+                    })}
                   </motion.div>
 
-                  <h4 className="relative z-20 text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: "var(--font-display)", color: "#ffffff" }}>
+                  <h4
+                    className="relative z-20 text-2xl md:text-3xl font-bold text-white mb-4"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      color: "#ffffff",
+                    }}
+                  >
                     {features[activeFeature].title}
                   </h4>
                   <p className="relative z-20 text-slate-300 text-lg leading-relaxed mb-6">
@@ -350,21 +437,25 @@ const About = () => {
 
                   {/* Feature Highlights */}
                   <div className="relative z-20 flex flex-wrap gap-3">
-                    {["Fast", "Secure", "Reliable", "Scalable"].map((tag, i) => (
-                      <motion.span
-                        key={tag}
-                        className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/80 text-sm font-medium border border-white/10"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 + i * 0.1 }}
-                      >
-                        {tag}
-                      </motion.span>
-                    ))}
+                    {["Fast", "Secure", "Reliable", "Scalable"].map(
+                      (tag, i) => (
+                        <motion.span
+                          key={tag}
+                          className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/80 text-sm font-medium border border-white/10"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 + i * 0.1 }}
+                        >
+                          {tag}
+                        </motion.span>
+                      )
+                    )}
                   </div>
 
                   {/* Decorative Glow */}
-                  <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${features[activeFeature].color} rounded-full blur-3xl opacity-30 z-10`} />
+                  <div
+                    className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${features[activeFeature].color} rounded-full blur-3xl opacity-30 z-10`}
+                  />
                 </motion.div>
               </AnimatePresence>
             </motion.div>
@@ -386,66 +477,176 @@ const About = () => {
               viewport={{ once: true }}
             >
               <Target className="w-4 h-4 text-purple-600" />
-              <span className="text-purple-700 text-sm font-semibold">See It In Action</span>
+              <span className="text-purple-700 text-sm font-semibold">
+                Stay Alert, Stay Safe
+              </span>
             </motion.div>
-            <p className="text-3xl md:text-4xl font-bold text-slate-900 mb-4" style={{ fontFamily: "var(--font-display)" }}>
-              Real-World Applications
+            <p
+              className="text-3xl md:text-4xl font-bold text-slate-900 mb-4"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Threats Can Be Anywhere
             </p>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Experience how VOCOxP seamlessly integrates into various environments
+              Trust is good, but verification is better. Are you verifying
+              before trusting?
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {useCases.map((useCase, index) => (
+          {/* Creative Bento Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            {/* Featured Large Card - Partner Trust */}
+            <motion.div
+              className="lg:col-span-2 group relative rounded-3xl overflow-hidden shadow-2xl shadow-purple-500/10"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ y: -8, scale: 1.01 }}
+            >
+              <div className="aspect-[17/11] overflow-hidden">
+                <motion.img
+                  src={useCases[2].image}
+                  alt={useCases[2].title}
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.6 }}
+                />
+              </div>
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/60 to-transparent" />
+
+              {/* Content - Left Aligned */}
+              <div className="absolute inset-0 flex flex-col justify-center p-6 md:p-8 max-w-md">
+                <motion.div
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/20 backdrop-blur-sm border border-red-400/30 w-fit mb-4"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
+                  <span className="text-red-300 text-xs font-semibold uppercase tracking-wider">
+                    Featured Alert
+                  </span>
+                </motion.div>
+
+                <motion.h4
+                  className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    color: "#ffffff",
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                >
+                  {useCases[2].title}
+                </motion.h4>
+                <motion.p
+                  className="text-white/80 text-base md:text-lg leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                >
+                  {useCases[2].description}
+                </motion.p>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Two Stacked Cards */}
+            <div className="flex flex-col gap-4">
+              {/* Card 1 - Lending Money */}
               <motion.div
-                key={index}
-                className="group relative rounded-3xl overflow-hidden"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="group relative rounded-3xl overflow-hidden flex-1 shadow-xl shadow-blue-500/10"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                whileHover={{ y: -8 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[16/10] overflow-hidden">
                   <motion.img
-                    src={useCase.image}
-                    alt={useCase.title}
+                    src={useCases[0].image}
+                    alt={useCases[0].title}
                     className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                   />
                 </div>
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/50 to-slate-900/20" />
 
                 {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
                   <motion.h4
-                    className="text-xl md:text-2xl font-bold text-white mb-2"
-                    style={{ fontFamily: "var(--font-display)", color: "#ffffff" }}
+                    className="text-lg md:text-xl font-bold text-white mb-2"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      color: "#ffffff",
+                    }}
                   >
-                    {useCase.title}
+                    {useCases[0].title}
                   </motion.h4>
-                  <p className="text-white/80 text-sm md:text-base">{useCase.description}</p>
-
-                  {/* Hover Button */}
-                  {/* <motion.button
-                    className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity"
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.2)" }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Learn More <ChevronRight className="w-4 h-4" />
-                  </motion.button> */}
+                  <p className="text-white/70 text-sm line-clamp-2">
+                    {useCases[0].description}
+                  </p>
                 </div>
 
-                {/* Corner Accent */}
-                <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Sparkles className="w-5 h-5 text-white" />
+                {/* Hover Glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 to-transparent" />
                 </div>
               </motion.div>
-            ))}
+
+              {/* Card 2 - Hostel Safety */}
+              <motion.div
+                className="group relative rounded-3xl overflow-hidden flex-1 shadow-xl shadow-emerald-500/10"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+              >
+                <div className="aspect-[16/10] overflow-hidden">
+                  <motion.img
+                    src={useCases[1].image}
+                    alt={useCases[1].title}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </div>
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/50 to-slate-900/20" />
+
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+                  <motion.h4
+                    className="text-lg md:text-xl font-bold text-white mb-2"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      color: "#ffffff",
+                    }}
+                  >
+                    {useCases[1].title}
+                  </motion.h4>
+                  <p className="text-white/70 text-sm line-clamp-2">
+                    {useCases[1].description}
+                  </p>
+                </div>
+
+                {/* Hover Glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/20 to-transparent" />
+                </div>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
 
@@ -464,8 +665,10 @@ const About = () => {
             >
               "Trust should not be assumed—
               <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                {" "}it should be verified.
-              </span>"
+                {" "}
+                it should be verified.
+              </span>
+              "
             </blockquote>
             <div className="mt-6 flex items-center justify-center gap-3">
               <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-400" />
