@@ -7,6 +7,7 @@ import UseCases from '../components/UseCases/UseCases';
 import Privacy from '../components/Privacy/Privacy';
 import Enquiry from '../components/Enquiry/Enquiry';
 import Footer from '../components/shared/Footer';
+import FloatingVideoWidget from '../components/shared/FloatingVideoWidget';
 
 const LandingPage = () => {
     return (
@@ -35,6 +36,9 @@ const LandingPage = () => {
 
             {/* Footer */}
             <Footer />
+
+            {/* Floating Video Widget */}
+            <FloatingVideoWidget />
         </main>
     );
 };

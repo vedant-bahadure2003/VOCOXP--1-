@@ -67,7 +67,7 @@ const Enquiry = () => {
             html: emailHtml,
             from: '"VOCOxP Website" <transactions@mounarchtech.com>',
           }),
-        }
+        },
       );
 
       if (!response.ok) {
@@ -560,11 +560,11 @@ const Enquiry = () => {
           <p>
             Prefer direct contact? Email us at{" "}
             <motion.a
-              href="mailto:contact@vocoxp.com"
+              href="mailto:contact@microintegrated.in"
               className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
               whileHover={{ scale: 1.05 }}
             >
-              contact@vocoxp.com
+              contact@microintegrated.in
             </motion.a>
           </p>
         </motion.div>

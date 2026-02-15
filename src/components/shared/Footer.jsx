@@ -199,11 +199,11 @@ const Footer = () => {
               <ul className="space-y-4">
                 <li>
                   <a
-                    href="mailto:contact@vocoxp.com"
+                    href="mailto:contact@microintegrated.in"
                     className="text-slate-400 hover:text-white transition-colors text-sm flex items-start gap-3"
                   >
                     <Mail className="w-4 h-4 mt-0.5 text-blue-400" />
-                    contact@vocoxp.com
+                    contact@microintegrated.in
                   </a>
                 </li>
 
